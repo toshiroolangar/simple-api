@@ -1,6 +1,4 @@
-"""
-Simple API developed in Flask
-"""
+"""Simple API developed in Flask"""
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -8,16 +6,12 @@ products = [
     {'id': 69, 'Name': 'Gago', 'Price': 2500},
     {'id': 70, 'Name': 'TY', 'Price': 500}
 ]
-"""
-Root path
-"""
+"""Root path"""
 @app.route('/')
 def welcome():
     """Return root path"""
     return 'Welcome to the jungle!'
-"""
-Products path
-"""
+"""Products path"""
 @app.route('/products', methods=['GET'])
 def get_products():
     """Return products"""
