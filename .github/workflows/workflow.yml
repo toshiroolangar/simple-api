@@ -1,7 +1,8 @@
 name : CI Workflow for simple-api
 
-on: push:
-    branches: ["main"]
+on: 
+    push:
+        branches: ["master"]
 
 jobs:
     build:
