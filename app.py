@@ -1,8 +1,7 @@
 """
 Simple API developed in Flask
 """
-import json
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 products = [
@@ -14,12 +13,14 @@ Root path
 """
 @app.route('/')
 def welcome():
+    """Return root path"""
     return 'Welcome to the jungle!'
 """
 Products path
 """
 @app.route('/products', methods=['GET'])
 def get_products():
+    """Return products"""
     return jsonify(products)
 
 if __name__ == ('__main__'):
