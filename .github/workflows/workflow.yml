@@ -1,0 +1,19 @@
+name : CI Workflow for simple-api
+
+on: push:
+    branches: ["main"]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        container: python:3.10-slim
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+            - name: Lint with pylint
+              run: |
+                pylint app.py

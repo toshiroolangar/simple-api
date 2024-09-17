@@ -1,1 +1,4 @@
+#App Dependency
 flask
+#Testing Dependency
+pylint
