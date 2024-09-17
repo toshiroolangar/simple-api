@@ -6,15 +6,13 @@ products = [
     {'id': 69, 'Name': 'Gago', 'Price': 2500},
     {'id': 70, 'Name': 'TY', 'Price': 500}
 ]
-"""Root path API"""
 @app.route('/')
 def welcome():
-    """Return root path"""
+    """Return welcome message in root path"""
     return 'Welcome to the jungle!'
-"""Products path API"""
 @app.route('/products', methods=['GET'])
 def get_products():
-    """Return products"""
+    """Return json response with the product list"""
     return jsonify(products)
 
 if __name__ == ('__main__'):
