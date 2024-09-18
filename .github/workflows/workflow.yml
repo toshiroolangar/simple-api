@@ -24,6 +24,9 @@ jobs:
                 pylint app.py
             - name: Code coverage test
               run: pytest --cov=app --cov-report html
+    build_image:
+        runs-on: mac-os
+        steps:
             - name: Build image
               run: docker build -t $DOCKER_IMAGE_NAME:latest .
             - name: Tag image
