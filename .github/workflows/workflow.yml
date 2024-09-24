@@ -45,5 +45,5 @@ jobs:
               - name: Log in to EC2 instance and pull then run image
                 run: |
                   echo "${{ secrets.TEST_EC2_PPK }}" > ~/kp.ppk
-                  ssh -i ~/kp.ppk "${{ vars.TEST_EC2_INS }}"
+                  ssh -i ~/kp.ppk root@${{ vars.TEST_EC2_INS }}
                   whoami 
