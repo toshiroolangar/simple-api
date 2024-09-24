@@ -39,3 +39,10 @@ jobs:
             - name: Push image to repo
               run: |
                 docker push $DOCKER_REGISTRY_URL:latest
+    deploy_app:
+          runs-on: ubuntu-latest
+          steps:
+              - name: Log in to EC2 instance and pull then run image
+                run: |
+                  ssh -i "${{ secrets.TEST_EC2_PPK }}" "${{ vars.TEST_EC2_INS }}"
+                  whoami 
