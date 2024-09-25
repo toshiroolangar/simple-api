@@ -45,20 +45,11 @@ jobs:
           needs: build_image
           steps:
             - name: AWS SSM Send-Command
-              uses: peterkimzz/aws-ssm-send-command@v1.1.1
+              uses: appleboy/ssh-action@master
               with:
-                # AWS access key id
-                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                # AWS secret access key
-                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                # Where EC2 instance is
-                aws-region: ${{ secrets.AWS_REGION}}
-                # AWS EC2 Instance id or ids
-                instance-ids: ${{ secrets.AWS_INSTANCE_ID}}
-                working-directory: /home/root
+                host: ${{ secrets.AWS_EC2_INSTANCE_PUB }}
+                key: ${{ secrets.TEST_EC2_PPK }}
                 # Bash commands you want to execute
-                command: |
+                script: |
                   docker ps -qa | xargs docker rm
-                  docker run -p 5000:5000 toshiiiiiiii/prepo_shi
-                # Comment for Send-Command
-                comment: Runs built application 
+                  docker run -d -p 80:5000 toshiiiiiiii/prepo_shi
