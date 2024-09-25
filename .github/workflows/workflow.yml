@@ -55,7 +55,10 @@ jobs:
                 aws-region: ${{ secrets.AWS_REGION}}
                 # AWS EC2 Instance id or ids
                 instance-ids: ${{ secrets.AWS_INSTANCE_ID}}
+                working-directory: /home/root
                 # Bash commands you want to execute
-                command: docker run -p 5000:5000 toshiiiiiiii/prepo_shi
+                command: |
+                  docker ps -qa | xargs docker rm
+                  docker run -p 5000:5000 toshiiiiiiii/prepo_shi
                 # Comment for Send-Command
                 comment: Runs built application 
